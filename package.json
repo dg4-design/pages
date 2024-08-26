@@ -1,7 +1,6 @@
 {
-  "name": "mpa-preset",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "dg4-site",
+  "version": "3.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
