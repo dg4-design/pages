@@ -2,7 +2,7 @@
  * @type {import('prettier').Config &
  *   import('prettier-plugin-jsdoc').Options}
  */
-export default {
+module.exports = {
   plugins: [
     /**
      * @see {@link https://www.npmjs.com/package/prettier-plugin-jsdoc} npm

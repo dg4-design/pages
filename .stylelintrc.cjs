@@ -1,7 +1,7 @@
 /**
  * @type {import('stylelint').Config}
  */
-export default {
+module.exports = {
   defaultSeverity: 'warning',
 
   extends: [
