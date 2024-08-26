@@ -1,0 +1,24 @@
+@use 'sass:map';
+
+/// メディアクエリのブレイクポイントのマップ
+$breakpoint: (
+  pc: 1024px,
+  mp: 768px,
+) !default;
+
+/// メディアクエリを設定する
+///
+/// @param {string} $type - メディアクエリのタイプ
+/// @param {string} $width-type - メディアクエリの幅のタイプ
+///
+/// @example
+/// ```scss
+/// @include media(pc) {
+///   font-size: 18px;
+/// }
+/// ```
+@mixin media($type, $width-type: min) {
+  @media (#{$width-type}-width: map.get($breakpoint, $type)) {
+    @content;
+  }
+}

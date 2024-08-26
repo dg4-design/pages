@@ -1,38 +1,29 @@
 {
-  "name": "dg4-site",
-  "version": "2.3.0",
-  "private": true,
-  "engines": {
-    "node": ">=18.18.0"
-  },
+  "name": "mpa-preset",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,json}'",
-    "install-and-build": "yarn install && yarn build"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.0",
-    "dayjs": "^1.11.5",
-    "microcms-js-sdk": "^3.1.2",
-    "next": "14.2.6",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "sass": "^1.54.5"
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/node": "^8.2.5",
+    "astro": "^4.7.0",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.10.2",
-    "@types/node": "22.5.0",
-    "@types/react": "18.3.4",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "14.2.6",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-unused-imports": "^4.1.3",
-    "prettier": "^3.3.3",
-    "typescript": "5.5.4"
+    "postcss-html": "^1.6.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-jsdoc": "^1.3.0",
+    "sass": "^1.75.0",
+    "stylelint": "^16.4.0",
+    "stylelint-config-recess-order": "^5.0.1",
+    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.8.0"
   }
 }

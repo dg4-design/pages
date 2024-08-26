@@ -1,0 +1,13 @@
+@forward './core/extensions/list' show list;
+@forward './core/extensions/list' as list-* hide list-list;
+@forward './core/extensions/math' show math;
+@forward './core/extensions/math' as math-* hide math-math;
+@forward './core/extensions/string' show string;
+@forward './core/extensions/string' as string-* hide string-string;
+
+@forward './core/font';
+@forward './core/media-query';
+@forward './core/theme';
+@forward './core/transition' show transition;
+@forward './core/transition' as transition-* hide transition-transition;
+@forward './core/typography';

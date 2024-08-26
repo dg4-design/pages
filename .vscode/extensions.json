@@ -1,9 +1,11 @@
 {
   "recommendations": [
-    "streetsidesoftware.code-spell-checker",
-    "mhutchie.git-graph",
-    "eamodio.gitlens",
-    "esbenp.prettier-vscode",
-    "styled-components.vscode-styled-components"
+    "astro-build.astro-vscode",
+    "PKief.material-icon-theme",
+    "syler.sass-indented",
+    "mrmlnc.vscode-scss",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode"
   ]
 }

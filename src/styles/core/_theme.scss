@@ -1,0 +1,39 @@
+/// @see {@link https://m3.material.io/theme-builder#/custom} 'Material Theme Builder'
+
+$white: #fdfdfd;
+$black: #222;
+
+$primary: #3e9f78;
+$on-primary: $white;
+
+$secondary: #4d6357;
+$on-secondary: $white;
+
+$tertiary: #3d6373;
+$on-tertiary: $white;
+
+$accent: #8d8d8d;
+$on-accent: $white;
+
+$error: #f44336;
+$on-error: $white;
+
+$background: $white; // 背景色
+$on-background: $black; // 背景色のテキスト
+$inverse-background: $black; // 背景色の斑点色
+$inverse-on-background: $white; // 背景色の斑点色のテキスト
+
+$surface: $white; // 表面色（カードなどのオブジェクトに使う）
+$on-surface: $black; // 表面色のテキスト
+$inverse-surface: $black; // 表面色の斑点色
+$inverse-on-surface: $white; // 表面色の斑点色のテキスト
+
+$surface-variant: #d0d0d0; // 薄い表面色（仕切り要素やヒントテキスト）
+$on-surface-variant: #404040; // 薄い表面色のテキスト
+
+$outline: #707973; // アウトライン色（ボーダーやアウトライン）
+
+$outline-variant: #bfc9c1; // 薄いアウトライン色（ボーダーやアウトライン）
+
+$shadow: #000000; // 影色
+$scrim: #000000; // スクリム色（モーダルやオーバーレイの背景色）
