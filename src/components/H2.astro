@@ -1,0 +1,92 @@
+---
+interface Props {
+  en: string;
+  ja: string;
+  class?: string;
+}
+
+const { en, ja, class: className } = Astro.props;
+---
+
+<div class:list={['h2', className]}>
+  <h2 class="en">{en}</h2>
+  <div class="ja">{ja}</div>
+</div>
+
+<style lang="scss">
+  .h2 {
+    position: relative;
+    width: fit-content;
+    height: 100px;
+    padding-top: 8px;
+    margin-right: auto;
+    margin-bottom: 80px;
+    margin-left: auto;
+    text-align: center;
+
+    @include media(tab) {
+      margin-bottom: 60px;
+    }
+
+    @include media(sp) {
+      height: 50px;
+      padding-top: 0;
+      margin-bottom: 40px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      content: '';
+      background-position: center;
+      background-size: cover;
+
+      @include media(sp) {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    &::before {
+      left: -130px;
+      background-image: url('/images/h2-l.svg');
+
+      @include media(sp) {
+        left: -75px;
+      }
+    }
+
+    &::after {
+      right: -130px;
+      background-image: url('/images/h2-r.svg');
+
+      @include media(sp) {
+        right: -75px;
+      }
+    }
+  }
+
+  .en {
+    font-family: 'Dont-GR', sans-serif;
+    font-size: 60px;
+    font-variation-settings:
+      'rnds' 0,
+      'dtsz' 100;
+
+    @include media(sp) {
+      font-size: 40px;
+    }
+  }
+
+  .ja {
+    margin-top: 8px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: $dg4-cyan;
+    letter-spacing: 0.2em;
+  }
+</style>

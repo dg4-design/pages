@@ -1,0 +1,129 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getAllPosts, getPostById } from '@/lib/microcms';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    params: { id: post.id },
+  }));
+}
+
+const { id } = Astro.params;
+const post = await getPostById(id);
+---
+
+<Layout title={post.name} noindex={true}>
+  <div class="modal">
+    <a href="/equipments" class="close-button clickable"></a>
+    <div class="scrolls">
+      <img src={post.image.url} alt={post.id} />
+      <div class="desc">
+        <h4 class="name">
+          {post.name}
+          {post.variety && ` - ${post.variety}`}
+          {post.owning && ` * ${post.owning}`}
+        </h4>
+        <p>
+          {post.maker}
+          {post.generation && `・${post.generation}`}
+        </p>
+        <p class="about">{post.about}</p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .modal {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 32px;
+    right: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .close-button::before,
+  .close-button::after {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 40px;
+    height: 3px;
+    content: '';
+    background-color: $dg4-black;
+  }
+
+  .close-button::before {
+    transform: rotate(25deg);
+  }
+
+  .close-button::after {
+    transform: rotate(-25deg);
+  }
+
+  .scrolls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 64px;
+  }
+
+  .scrolls img {
+    display: block;
+    width: 60%;
+    max-width: 760px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  .desc {
+    width: 40%;
+    margin-left: 40px;
+    line-height: 1.5;
+  }
+
+  .name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .about {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .close-button {
+      top: 20px;
+    }
+
+    .scrolls {
+      flex-direction: column;
+      justify-content: normal;
+      padding: 64px 24px;
+      overflow-y: auto;
+    }
+
+    .scrolls img {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .desc {
+      width: 100%;
+      margin-top: 24px;
+      margin-left: 0;
+    }
+  }
+</style>

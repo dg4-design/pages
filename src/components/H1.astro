@@ -1,0 +1,89 @@
+---
+interface Props {
+  en: string;
+  ja: string;
+}
+
+const { en, ja } = Astro.props;
+
+const formattedPageName = en.toLowerCase().replace(/[ ]/g, '');
+const imagePath = `/images/fv/${formattedPageName}.jpg`;
+---
+
+<section class="page-title">
+  <div class="heading1">
+    <h1 class="en">{en}</h1>
+    <div class="ja">{ja}</div>
+  </div>
+  <img class="bg" src={imagePath} alt={`${formattedPageName} first view`} />
+</section>
+
+<style lang="scss">
+  .page-title {
+    position: relative;
+    height: 370px;
+    padding-top: 0;
+
+    @include media(tab) {
+      height: 270px;
+    }
+
+    @include media(sp) {
+      height: 200px;
+    }
+  }
+
+  .heading1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    width: 100%;
+    max-width: 1024px;
+    margin-top: 35px;
+    color: #fff;
+    transform: translateY(-50%) translateX(-50%);
+
+    @include media(tab) {
+      width: calc(100% - 40px);
+      max-width: none;
+    }
+
+    @include media(sp) {
+      width: calc(100% - 24px);
+    }
+
+    .en {
+      font-family: 'Dont-GR', sans-serif;
+      font-size: 100px;
+      font-variation-settings:
+        'rnds' 0,
+        'dtsz' 100;
+
+      @include media(tab) {
+        font-size: 64px;
+      }
+
+      @include media(sp) {
+        font-size: 48px;
+      }
+    }
+
+    .ja {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+    }
+  }
+
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+  }
+</style>

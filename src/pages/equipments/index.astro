@@ -1,0 +1,73 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/Container.astro';
+import H1 from '@/components/H1.astro';
+import H2 from '@/components/H2.astro';
+import { getAllPosts } from '@/lib/microcms';
+import { categoryNames } from '@/lib/microcms';
+
+const posts = await getAllPosts();
+
+const postsByCategory = posts.reduce(
+  (acc, post) => {
+    const cat = post.category;
+    if (!acc[cat]) acc[cat] = [];
+    acc[cat].push(post);
+    return acc;
+  },
+  {} as Record<string, typeof posts>,
+);
+
+Object.values(postsByCategory).forEach((categoryPosts) => {
+  categoryPosts.sort((a, b) => a.order - b.order);
+});
+---
+
+<Layout
+  title="Equipments"
+  description="使用している機材をドット絵として描き上げています。使用機材そのものの詳しい情報もこちら。"
+>
+  <H1 en="Equipments" ja="使用機材" />
+  {
+    categoryNames.map(({ en, ja }) => (
+      <section class="equipments-category">
+        <Container>
+          <H2 en={en} ja={ja} />
+        </Container>
+        <div class="equipments-list">
+          {postsByCategory[en]?.map((post) => (
+            <a href={`/equipments/${post.id}`} class="equipments-item">
+              <img
+                src={post.image.url}
+                alt={post.name}
+                width={200}
+                height={200}
+              />
+            </a>
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</Layout>
+
+<style>
+  .equipments-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+  .equipments-item {
+    line-height: 0;
+  }
+  .equipments-item img {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+  }
+  @media (max-width: 768px) {
+    .equipments-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
