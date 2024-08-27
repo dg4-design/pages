@@ -1,0 +1,196 @@
+---
+import Button from './Button.astro';
+import Container from './Container.astro';
+const currentYear = new Date().getFullYear();
+
+const linkData = [
+  'x',
+  'misskey',
+  'instagram',
+  'bsky',
+  'note',
+  'youtube',
+  'suzuri',
+  'github',
+];
+---
+
+<footer id="footer" class="footer">
+  <Container class="footer-container">
+    <div>
+      <div class="message-content">
+        <Button
+          href="https://messenger.dgdgdgdg.com"
+          text="Messenger"
+          class="footer-button messenger-button"
+          external={true}
+        />
+        <Button
+          href="mailto:contact@dgdgdgdg.com"
+          text="E-mail"
+          class="footer-button email-button"
+          external={true}
+        />
+      </div>
+      <ul class="link-items">
+        {
+          linkData.map((value) => (
+            <li class="item-content">
+              <a
+                href={`https://${value}.dgdgdgdg.com`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={`/images/icon/${value}.svg`}
+                  width="154"
+                  height="154"
+                  alt={value}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="credit">
+      <a href="/" class="credit-logo">
+        <object data="/images/dist/logo-white.svg" type="image/svg+xml">
+        </object>
+      </a>
+      <p class="copyright-text">©︎ 2021 - {currentYear} dgdgdgdg</p>
+    </div>
+  </Container>
+</footer>
+
+<style lang="scss">
+  @use '../styles' as *;
+
+  .footer {
+    padding-top: 64px;
+    padding-bottom: 90px;
+    background-color: $dg4-black;
+
+    @include media(tab) {
+      padding-top: 40px;
+      padding-bottom: 70px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      width: 1024px;
+
+      @include media(tab) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .message-content {
+    display: flex;
+    gap: 24px;
+    transform: translate(4px, 4px);
+
+    @include media(sp) {
+      justify-content: center;
+    }
+  }
+
+  .footer-button {
+    position: relative;
+    padding-left: 44px;
+
+    @include media(sp) {
+      padding-left: 36px;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 4px;
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin-top: auto;
+      margin-bottom: auto;
+      content: '';
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      @include media(sp) {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  .messenger-button::before {
+    background-image: url('/images/icon/messenger.svg');
+  }
+
+  .email-button::before {
+    background-image: url('/images/icon/envelope-fill.svg');
+    background-position: center;
+    background-size: 22px;
+  }
+
+  .link-items {
+    display: flex;
+    max-width: 600px;
+    margin-top: 32px;
+    transform: translate(-22px, 0);
+
+    @include media(sp) {
+      flex-wrap: wrap;
+      max-width: unset;
+      transform: unset;
+    }
+  }
+
+  .item-content {
+    width: 12.5%;
+    @include media(sp) {
+      width: 25%;
+    }
+  }
+
+  .credit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @include media(tab) {
+      margin-top: 40px;
+      margin-left: auto;
+    }
+
+    @include media(sp) {
+      width: auto;
+      margin-top: 24px;
+      margin-left: unset;
+    }
+  }
+
+  .credit-logo {
+    width: 100%;
+
+    object {
+      min-width: 384px;
+
+      @include media(sp) {
+        min-width: unset;
+        margin-right: 4px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .copyright-text {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #fff;
+  }
+</style>

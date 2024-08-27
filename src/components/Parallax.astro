@@ -1,0 +1,45 @@
+---
+interface Props {
+  factor: number;
+}
+
+const { factor } = Astro.props;
+---
+
+<div class="parallax" data-factor={factor}>
+  <slot />
+</div>
+
+<script>
+  class Parallax extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      const factor = parseFloat(this.dataset.factor || '0');
+
+      const handleScroll = () => {
+        const position = window.pageYOffset;
+        const targetPosition = factor * position;
+        this.style.transform = `translateY(${targetPosition}px)`;
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll(); // 初期位置を設定
+    }
+  }
+
+  customElements.define('parallax-element', Parallax);
+
+  document.querySelectorAll('.parallax').forEach((element) => {
+    new Parallax().connectedCallback.call(element);
+  });
+</script>
+
+<style>
+  .parallax {
+    position: absolute;
+    will-change: transform;
+  }
+</style>

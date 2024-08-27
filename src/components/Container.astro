@@ -1,0 +1,36 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class:list={['container', className]} {...rest}>
+  <slot />
+</div>
+
+<style lang="scss">
+  @use 'sass:map';
+  .container {
+    width: map.get($container-width, pc);
+    margin-right: auto;
+    margin-left: auto;
+
+    @include media(tab) {
+      width: map.get($container-width, tab);
+    }
+
+    @include media(sp) {
+      width: map.get($container-width, sp);
+    }
+
+    .content:not(:first-of-type) {
+      margin-top: 80px;
+
+      @include media(tab) {
+        margin-top: 60px;
+      }
+
+      @include media(sp) {
+        margin-top: 40px;
+      }
+    }
+  }
+</style>

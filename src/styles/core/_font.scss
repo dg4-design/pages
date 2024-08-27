@@ -1,1 +1,19 @@
-$font-family-jp: '';
+// font
+@font-face {
+  font-family: 'Dont-GR';
+  src: url('/fonts/Dont-GR-SquareVF.ttf');
+}
+
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-weight: normal;
+  src: url('/fonts/ZenKakuGothicNew-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Zen Kaku Gothic New';
+  font-weight: bold;
+  src: url('/fonts/ZenKakuGothicNew-Bold.ttf');
+}
+
+$font-family-jp: 'Zen Kaku Gothic New';

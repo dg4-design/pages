@@ -1,7 +1,109 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Parallax from '@/components/Parallax.astro';
 ---
 
-<Layout title="Home">
-  <h1>Welcome to Astro</h1>
+<Layout
+  title="Home"
+  description="2021年2月1日に開業。デザイン、映像制作、Web制作をメインに、多方面であることを生かしつつ洗練されたものを目指して制作していきます。"
+>
+  <section class="fv">
+    <object id="space" data="/images/fv/space.svg" type="image/svg+xml">
+    </object>
+    <Parallax factor={0.4}>
+      <object
+        class="logo"
+        id="logo1"
+        data="/images/dist/logo-white.svg"
+        type="image/svg+xml"
+      >
+      </object>
+    </Parallax>
+    <Parallax factor={0.2}>
+      <object
+        class="logo"
+        id="logo2"
+        data="/images/dist/logo-white.svg"
+        type="image/svg+xml"
+      >
+      </object>
+    </Parallax>
+    <Parallax factor={-0.4}>
+      <object
+        class="logo"
+        id="logo3"
+        data="/images/dist/logo-white.svg"
+        type="image/svg+xml"
+      >
+      </object>
+    </Parallax>
+    <Parallax factor={-1.5}>
+      <object
+        class="logo"
+        id="logo4"
+        data="/images/dist/logo-white.svg"
+        type="image/svg+xml"
+      >
+      </object>
+    </Parallax>
+  </section>
 </Layout>
+
+<style lang="scss">
+  .fv {
+    position: relative;
+    width: 100vw;
+    height: 120vh;
+    padding-top: 0;
+    background-color: $dg4-black;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    #space {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -14vw;
+      width: 97vw;
+      margin: auto;
+
+      @include media(sp) {
+        right: 0;
+        left: 0;
+        width: unset;
+        height: 100vh;
+        margin-left: -20vw;
+      }
+    }
+
+    .logo {
+      position: absolute;
+    }
+
+    #logo1 {
+      top: 32vh;
+      left: 30vw;
+      width: 10vw;
+    }
+
+    #logo2 {
+      top: 18vh;
+      left: 51vw;
+      width: 14vw;
+    }
+
+    #logo3 {
+      top: 44vh;
+      left: 54vw;
+      width: 52vw;
+    }
+
+    #logo4 {
+      top: 58vh;
+      left: -77vw;
+      width: 138vw;
+    }
+  }
+</style>
