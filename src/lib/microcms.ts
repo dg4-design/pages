@@ -57,7 +57,7 @@ export type Post = {
 };
 
 export async function getAllPosts() {
-  const limit = 100; // 1回のリクエストで取得する最大件数
+  const limit = 100;
   let offset = 0;
   let allPosts: Post[] = [];
 
