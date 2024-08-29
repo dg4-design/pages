@@ -1,5 +1,5 @@
-@use '..' as *;
+@use '../core/font' as font;
 
 body {
-  font-family: $font-family-jp, sans-serif;
+  font-family: font.$font-family-jp, sans-serif;
 }

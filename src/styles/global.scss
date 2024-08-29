@@ -1,9 +1,11 @@
 @use './style/base';
 @use './style/font';
+@use './core/theme' as theme;
+@use './core/media-query' as *;
 
 body {
   line-height: 1;
-  color: $dg4-black;
+  color: theme.$dg4-black;
 }
 
 object {
@@ -36,7 +38,6 @@ footer {
   }
 }
 
-// image
 img {
   width: 100%;
   height: auto;
@@ -45,7 +46,7 @@ img {
 
 a {
   display: block;
-  color: $dg4-black;
+  color: theme.$dg4-black;
   text-decoration: none;
   transition: all 0.3s;
 }
@@ -68,22 +69,22 @@ a:hover {
 section {
   padding-top: 120px;
 
-  @include media(tab) {
+  @include media(mp) {
     padding-top: 80px;
   }
 
-  @include media(sp) {
+  @include media(mp, max) {
     padding-top: 60px;
   }
 
   &:last-child {
     margin-bottom: 160px;
 
-    @include media(tab) {
+    @include media(mp) {
       margin-bottom: 120px;
     }
 
-    @include media(sp) {
+    @include media(mp, max) {
       margin-bottom: 80px;
     }
   }
