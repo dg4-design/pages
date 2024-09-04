@@ -3,7 +3,7 @@ interface Props {
   factor: number;
 }
 
-const { factor } = Astro.props;
+const { factor }: Props = Astro.props;
 ---
 
 <div class="parallax" data-factor={factor}>

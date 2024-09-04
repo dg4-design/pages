@@ -9,7 +9,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false }: Props = Astro.props;
 
 const pathname = Astro.url.pathname;
 const nowUrl = `https://dgdgdgdg.com${pathname}`;

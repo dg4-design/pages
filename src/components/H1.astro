@@ -4,7 +4,7 @@ interface Props {
   ja: string;
 }
 
-const { en, ja } = Astro.props;
+const { en, ja }: Props = Astro.props;
 
 const formattedPageName = en.toLowerCase().replace(/[ ]/g, '');
 const imagePath = `/images/fv/${formattedPageName}.jpg`;

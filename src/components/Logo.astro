@@ -3,7 +3,7 @@ interface Props {
   optDay?: string;
 }
 
-const { optDay = new Date().toISOString().split('T')[0] } = Astro.props;
+const { optDay = new Date().toISOString().split('T')[0] }: Props = Astro.props;
 
 function calculateMonths(startDate: string, endDate: string): number {
   const start = new Date(startDate);

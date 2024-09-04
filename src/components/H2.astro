@@ -5,7 +5,7 @@ interface Props {
   class?: string;
 }
 
-const { en, ja, class: className } = Astro.props;
+const { en, ja, class: className }: Props = Astro.props;
 ---
 
 <div class:list={['h2', className]}>
