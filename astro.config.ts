@@ -5,6 +5,12 @@ import { defineConfig } from 'astro/config';
  */
 export default defineConfig({
   vite: {
+    define: {
+      'import.meta.env.SERVICE_DOMAIN': JSON.stringify(
+        process.env.SERVICE_DOMAIN,
+      ),
+      'import.meta.env.API_KEY': JSON.stringify(process.env.API_KEY),
+    },
     css: {
       preprocessorOptions: {
         scss: {
